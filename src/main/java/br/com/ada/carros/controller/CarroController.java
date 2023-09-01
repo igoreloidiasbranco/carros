@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.List;
 
-
+// listar e criar somente funcionam
+// fazer validação se criou, não criar novamente
+// fazer a edição do carro e a relação com as demais entidades.
 @RestController
 @RequestMapping("/carro")
 public class CarroController extends BaseController {
@@ -28,10 +30,10 @@ public class CarroController extends BaseController {
   private CorService corService;
 
     @GetMapping("/listar")
-    public List<CarroDTO> listar(@RequestParam String filtro) {
-        if (filtro != null && !filtro.isEmpty()) {
+    public List<CarroDTO> listar(/*@RequestParam String filtro*/) {
+       // if (filtro != null && !filtro.isEmpty()) {
            // return carroService.filterByNome(filtro);
-        }
+       // }
         return FactoryDTO.carrosToDTO(carroService.listar());
     }
 

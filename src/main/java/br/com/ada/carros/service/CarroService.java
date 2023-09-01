@@ -17,7 +17,13 @@ public class CarroService {
    @Autowired
    CombustivelService combustivelService;
 
-    public List<Carro> listar() {return carroRepository.findWithCombustiveis();}
+    public List<Carro> listar() {
+        return carroRepository.findAll();
+    }
+
+    public List<Carro> listarCarrosPorCombustivel() {
+        return carroRepository.findWithCombustiveis();
+    }
 
 public void criar(Carro carro){
         carro.setCombustivel(combustivelService.getByUid(carro.getCombustivel().getUid()));
@@ -25,5 +31,6 @@ public void criar(Carro carro){
         carroRepository.saveAndFlush(carro);
 }
 
-    }
+
+}
 
